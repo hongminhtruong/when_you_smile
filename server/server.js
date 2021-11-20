@@ -19,8 +19,6 @@ var store = new MongoDBStore({
 });
 
 store.on('error', function(error) {
-    assert.ifError(error);
-    assert.ok(false);
 });
 
 app.set('trust proxy', true);
@@ -70,13 +68,8 @@ app.all('/*', function(req, res, next) {
     res.sendFile('/public/html/index.html', { root: __dirname });
 });
 
-if(config.env == 'development'){
-	require('./config/development.js').createDevServer(app);
-}else{
-	app.listen(process.env.PORT, '0.0.0.0', () => {
-		console.log('Started on port ', process.env.PORT);
-    });
-}
-
+app.listen(process.env.PORT, '0.0.0.0', () => {
+    console.log('Started on port ', process.env.PORT);
+});
 
 //module.exports = {app};
