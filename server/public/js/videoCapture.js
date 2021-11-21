@@ -1,3 +1,6 @@
+// 'video/webm;codecs=h264'
+var mimeType = 'video/webm;codecs=vp9';
+
 app.factory('videoCapture', function($timeout, $interval) {
 
 	var saveVideo = function(assetSources, openFile, done){
@@ -14,7 +17,7 @@ app.factory('videoCapture', function($timeout, $interval) {
 		var inputStream = video.captureStream(30);
 
 		var options = {
-			mimeType: 'video/webm;codecs=h264'
+			mimeType: mimeType
 		};
 		var recordedBlobs = [];
 		var newStream = new MediaStream();
@@ -29,7 +32,7 @@ app.factory('videoCapture', function($timeout, $interval) {
 
 		mediaRecorder.onstop = function (event){
 			if(!ruinedVideo){
-				var blob = new Blob(recordedBlobs, {type: 'video/webm;codecs=h264'});
+				var blob = new Blob(recordedBlobs, {type: mimeType});
 				var url = window.URL.createObjectURL(blob);
 				done({blob:blob, ruinedVideo:ruinedVideo});
 				if(openFile){
