@@ -3,7 +3,10 @@
 - works locally
 - Facebook integration is removed
 
-# Installation Guide
+# Use online
+https://hongminhtruong.de/when_you_smile/
+
+# Use locally
 1. Install NodeJS + Git
 2. run "npm install" + "npm start" in command line
 3. open "http://localhost:5000" in browser
